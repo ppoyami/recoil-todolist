@@ -239,6 +239,7 @@ const normalize = css`
 const GlobalStyles = (theme: { colors: IColor }) =>
   css(normalize, reset, {
     body: {
+      maxHeight: '100vh',
       background: theme.colors.background,
       color: theme.colors.text.primary,
     },
