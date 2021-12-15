@@ -11,7 +11,7 @@ type currentCtaType = string;
 
 export const todos = atom<ITodo[]>({
   key: 'todos',
-  default: JSON.parse(window.localStorage.getItem('todos') as string),
+  default: JSON.parse(window.localStorage.getItem('todos') as string) || [],
 });
 
 export const categories = atom<categoriesType>({

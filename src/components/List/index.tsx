@@ -16,7 +16,7 @@ export default function List() {
 
   return (
     <Container>
-      {filterdTodoList.map(({ id, text, category }) => (
+      {filterdTodoList?.map(({ id, text, category }) => (
         <Todo key={id} id={id} text={text} category={category} />
       ))}
     </Container>
