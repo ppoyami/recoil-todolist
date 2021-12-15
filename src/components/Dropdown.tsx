@@ -1,15 +1,24 @@
 import styled from '@emotion/styled';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 
+import { todos } from '../atoms';
 import { ReactComponent as Down } from '@assets/down.svg';
+
+interface IDropdown {
+  id: number;
+  items: string[];
+  current: string;
+}
 
 type dropdownType = {
   open: boolean;
 };
 
-export default function Dropdown() {
+export default function Dropdown({ id, items, current }: IDropdown) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const setTodos = useSetRecoilState(todos);
   const toggleDropdown = () => {
     setOpen(prev => !prev);
   };
@@ -21,6 +30,15 @@ export default function Dropdown() {
     setOpen(false);
   };
 
+  const onClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLLIElement;
+    setTodos(prevState =>
+      prevState.map(todo =>
+        todo.id === id ? { ...todo, category: target.innerText } : todo,
+      ),
+    );
+  };
+
   useEffect(() => {
     document.addEventListener('click', closeDropdown);
   }, []);
@@ -28,13 +46,15 @@ export default function Dropdown() {
   return (
     <Container onClick={toggleDropdown} ref={containerRef}>
       <Display>
-        <span>Doing</span>
+        <span>{current}</span>
         <Down width="1.2em" height="1.2em" />
       </Display>
       <DropdownCotainer open={open}>
-        <DropdownItem>Doing</DropdownItem>
-        <DropdownItem>Done</DropdownItem>
-        <DropdownItem>To_Do</DropdownItem>
+        {items.map((text, index) => (
+          <DropdownItem key={index} onClick={onClick}>
+            {text}
+          </DropdownItem>
+        ))}
       </DropdownCotainer>
     </Container>
   );
@@ -54,7 +74,7 @@ const Display = styled.div({
 const DropdownCotainer = styled.ul<dropdownType>(({ theme, open }) => ({
   position: 'absolute',
   top: '0%',
-  left: '135%',
+  left: 'calc(100% + 10px)',
   display: open ? 'block' : 'none',
 
   '& > *:not(:last-of-type)': {

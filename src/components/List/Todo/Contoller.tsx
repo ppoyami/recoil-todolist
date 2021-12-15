@@ -1,11 +1,18 @@
 import styled from '@emotion/styled';
-
+import { useRecoilValue } from 'recoil';
 import Dropdown from '@components/Dropdown';
+import { categories } from '../../../atoms';
 
-export default function Contoller() {
+interface IController {
+  id: number;
+  current: string;
+}
+
+export default function Contoller({ id, current }: IController) {
+  const categoryList = useRecoilValue(categories);
   return (
     <Wrapper>
-      <Dropdown />
+      <Dropdown id={id} current={current} items={categoryList} />
     </Wrapper>
   );
 }

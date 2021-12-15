@@ -2,16 +2,17 @@ import styled from '@emotion/styled';
 import Contoller from './Contoller';
 
 interface ITodo {
+  id: number;
   text: string;
   category: string;
 }
 
-export default function Todo({ text, category }: ITodo) {
+export default function Todo({ id, text, category }: ITodo) {
   return (
     <Wrapper>
       <p>{text}</p>
       <small>{category}</small>
-      <Contoller />
+      <Contoller id={id} current={category} />
     </Wrapper>
   );
 }
