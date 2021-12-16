@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/recoil-todolist/static/js/main.35bf18e9.chunk.js",
-    "main.js.map": "/recoil-todolist/static/js/main.35bf18e9.chunk.js.map",
+    "main.js": "/recoil-todolist/static/js/main.ac821233.chunk.js",
+    "main.js.map": "/recoil-todolist/static/js/main.ac821233.chunk.js.map",
     "runtime-main.js": "/recoil-todolist/static/js/runtime-main.174fae51.js",
     "runtime-main.js.map": "/recoil-todolist/static/js/runtime-main.174fae51.js.map",
-    "static/js/2.717db788.chunk.js": "/recoil-todolist/static/js/2.717db788.chunk.js",
-    "static/js/2.717db788.chunk.js.map": "/recoil-todolist/static/js/2.717db788.chunk.js.map",
+    "static/js/2.91291e43.chunk.js": "/recoil-todolist/static/js/2.91291e43.chunk.js",
+    "static/js/2.91291e43.chunk.js.map": "/recoil-todolist/static/js/2.91291e43.chunk.js.map",
     "index.html": "/recoil-todolist/index.html",
-    "static/js/2.717db788.chunk.js.LICENSE.txt": "/recoil-todolist/static/js/2.717db788.chunk.js.LICENSE.txt",
+    "static/js/2.91291e43.chunk.js.LICENSE.txt": "/recoil-todolist/static/js/2.91291e43.chunk.js.LICENSE.txt",
     "static/media/down.62cefd0d.svg": "/recoil-todolist/static/media/down.62cefd0d.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.174fae51.js",
-    "static/js/2.717db788.chunk.js",
-    "static/js/main.35bf18e9.chunk.js"
+    "static/js/2.91291e43.chunk.js",
+    "static/js/main.ac821233.chunk.js"
   ]
 }
