@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { todos, categories } from '../atoms';
 
 interface IForm {
@@ -17,8 +18,8 @@ export default function Creator() {
     formState: { errors },
   } = useForm();
 
-  const setTodos = useSetRecoilState(todos);
-  const setCategories = useSetRecoilState(categories);
+  const [todoList, setTodos] = useRecoilState(todos);
+  const [categoryList, setCategories] = useRecoilState(categories);
 
   const handleValid = ({ todo, category }: IForm) => {
     const todoObj = { id: Date.now(), text: todo, category };
@@ -31,6 +32,17 @@ export default function Creator() {
     setValue('todo', '');
     setValue('category', '');
   };
+
+  // Q: todoList를 구독하고 있는 컴포넌트에서 상태가 변경되었을때 로컬스토리지를 업데이트. 이게 최선??
+  useEffect(() => {
+    // !update
+    window.localStorage.setItem('todos', JSON.stringify(todoList));
+  }, [todoList]);
+
+  useEffect(() => {
+    // !update
+    window.localStorage.setItem('categories', JSON.stringify(categoryList));
+  }, [categoryList]);
 
   return (
     <Form onSubmit={handleSubmit(handleValid)}>

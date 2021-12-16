@@ -16,8 +16,8 @@ export const todos = atom<ITodo[]>({
 
 export const categories = atom<categoriesType>({
   key: 'categories',
-  // TODO: localStorage에서 불러오기
-  default: [],
+  default:
+    JSON.parse(window.localStorage.getItem('categories') as string) || [],
 });
 
 export const currentCategory = atom<currentCtaType>({

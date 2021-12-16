@@ -73,6 +73,7 @@ const Display = styled.div({
 
 const DropdownCotainer = styled.ul<dropdownType>(({ theme, open }) => ({
   position: 'absolute',
+  width: '100%',
   top: '0%',
   left: 'calc(100% + 10px)',
   display: open ? 'block' : 'none',
